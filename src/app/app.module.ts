@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { DataService } from './services/data-service/data.service';
+import { Constant } from './services/const';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { DataService } from './services/data-service/data.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [DataService],
+  providers: [Constant, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
