@@ -8,16 +8,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  serviceMessage: any = {};
+  serviceMessage: any;
   student: any = {};
 
   constructor(private dataService: DataService) { }
+
   ngOnInit() {
   }
 
   submit(student: NgForm) {
     this.dataService.save(student).subscribe(
-      () => this.serviceMessage = "Success!",
+      res => {
+        console.log(res);
+        this.serviceMessage = res.message;
+      },
       error => console.error(error)
     );
   }
