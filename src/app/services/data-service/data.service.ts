@@ -8,6 +8,7 @@ import { Constant } from '../const';
 })
 export class DataService {
   private API = Constant.API;
+  private API_KEY = Constant.API_KEY;
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +16,7 @@ export class DataService {
     let result: Observable<Object>;
     result = this.http.post(this.API, student, {
       headers:
-        { ['x-api-key']: 'mejhCjgsteYd8T0selCU5TcAIXax5Ir5ABiDtNP5' }
+        { ['x-api-key']: this.API_KEY }
     });
     return result;
   }
