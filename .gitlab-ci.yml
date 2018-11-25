@@ -29,5 +29,6 @@ aws-deploy:
   script:
     - "pip3 install awscli --upgrade"
     - "aws --version"
-    - "aws s3 rm s3://$AWS_S3_BUCKET/"
-    - "aws s3 cp $DEPLOYMENT_DIR s3://$AWS_S3_BUCKET/"
+    - "aws s3 ls s3://$AWS_S3_BUCKET"
+    - "aws s3 rm s3://$AWS_S3_BUCKET/*"
+    - "aws s3 cp $DEPLOYMENT_DIR s3://$AWS_S3_BUCKET"
