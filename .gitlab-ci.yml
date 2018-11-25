@@ -7,14 +7,14 @@ stages:
   - build
 
 variables:
-  DEPLOYMENT_DIR: "distr"
+  DEPLOYMENT_DIR: "dist"
 
 ng-build:
   image: node:11
   stage: build
   script: 
     - "npm install -g @angular/cli@7.0.4"
-    - "ls -ltr"
+    - "ng build"
   artifacts:
     paths:
       - $DEPLOYMENT_DIR
