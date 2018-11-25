@@ -1,0 +1,19 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+
+variables:
+  DEPLOYMENT_DIR: "distr"
+
+ng-build:
+  image: angular/ngcontainer
+  stage: build
+  script: "ng build"
+  artifacts:
+    paths:
+      - $DEPLOYMENT_DIR
+    expire_in: 1 hour
