@@ -5,6 +5,7 @@ services:
 
 stages:
   - build
+  - deploy
 
 variables:
   DEPLOYMENT_DIR: "dist"
@@ -21,3 +22,11 @@ ng-build:
     paths:
       - $DEPLOYMENT_DIR
     expire_in: 1 hour
+
+aws-deploy:
+  image: python
+  stage: deploy
+  script:
+    - "pip3 install awscli --upgrade"
+    - "aws --version"
+    - "aws s3 sync $DEPLOYMENT_DIR s3://$AWS_S3_BUCKET"
