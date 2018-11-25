@@ -14,7 +14,7 @@ ng-build:
   stage: build
   script: 
     - "npm install -g @angular/cli@7.0.4"
-    - "ng build"
+    - "ng build --prod --aot"
   artifacts:
     paths:
       - $DEPLOYMENT_DIR
