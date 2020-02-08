@@ -1,0 +1,17 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+    background-color: rgba(93, 113, 138, 0.308);
+    margin: 0px
+}
+
+.vertical-space {
+    display: block;
+    height: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.align-center {
+    text-align: center !important
+}

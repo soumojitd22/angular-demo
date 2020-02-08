@@ -1,0 +1,38 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+variables:
+  DEPLOYMENT_DIR: "dist"
+
+ng-build:
+  only:
+    refs:
+      - master
+  image: node:11
+  stage: build
+  script:
+    - "npm install -g @angular/cli@7.0.4"
+    - "rm ./package-lock.json"
+    - "npm install"
+    - "ng build --prod --aot"
+  artifacts:
+    paths:
+      - $DEPLOYMENT_DIR
+    expire_in: 1 hour
+
+aws-deploy:
+  only:
+    refs:
+      - master
+  image: python
+  stage: deploy
+  script:
+    - "pip3 install awscli --upgrade"
+    - "aws --version"
+    - "aws s3 sync $DEPLOYMENT_DIR s3://$AWS_S3_BUCKET --delete"
