@@ -11,9 +11,12 @@ variables:
   DEPLOYMENT_DIR: "dist"
 
 ng-build:
+  only:
+    refs:
+      - master
   image: node:11
   stage: build
-  script: 
+  script:
     - "npm install -g @angular/cli@7.0.4"
     - "rm ./package-lock.json"
     - "npm install"
@@ -24,6 +27,9 @@ ng-build:
     expire_in: 1 hour
 
 aws-deploy:
+  only:
+    refs:
+      - master
   image: python
   stage: deploy
   script:
