@@ -1,3 +1,3 @@
 # Angular-Demo
 
-Demo project with Angular
+Demo project with Angular.
